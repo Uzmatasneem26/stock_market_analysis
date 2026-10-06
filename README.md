@@ -12,6 +12,7 @@ Six daily CSVs with at least `Date` and `Close Price` (and `Deliverable Quantity
 
 ## Pages
 * **Home**: KPIs, performance table, growth chart, project notes
+* **Live Prices**: current NSE prices for the six companies (Yahoo Finance, delayed), 52-week range, volume and today's golden-cross status
 * **Price & Signals**: price, moving averages, Buy/Sell markers, signal log, signal-on-a-date lookup
 * **Returns Analysis**: raw vs adjusted change, yearly averages, five best closes
 * **Strategy Backtest**: compounded trades vs buy-and-hold, whipsaws, trade list
@@ -34,6 +35,7 @@ stock_market_app/
 ├── data/             # the six CSV files
 ├── pages/
 │   ├── home.py
+│   ├── live_prices.py
 │   ├── price_signals.py
 │   ├── returns_analysis.py
 │   ├── backtest.py
@@ -58,6 +60,9 @@ Place `bajaj_auto.csv`, `eicher_motors.csv`, `hero_motocorp.csv`, `infosys.csv`,
 ## Deploy
 Push `app.py`, `utils.py`, `requirements.txt`, `data/` and `pages/` to GitHub, then deploy on Streamlit
 Community Cloud with `app.py` as the main file.
+
+## Live prices
+The Live Prices page uses the `yfinance` package (Yahoo Finance, about 15 minutes delayed, cached for 5 minutes). It needs internet access, which Streamlit Community Cloud provides. Live prices are split/bonus-adjusted by Yahoo, so they are not directly comparable to the 2015-2018 CSV closes.
 
 ## Limitations
 * Percent changes ignore dividends; the backtest ignores brokerage, tax and slippage.

@@ -208,6 +208,7 @@ with st.sidebar:
 pg = st.navigation(
     [
         st.Page("pages/home.py", title="Home", default=True),
+        st.Page("pages/live_prices.py", title="Live Prices"),
         st.Page("pages/price_signals.py", title="Price & Signals"),
         st.Page("pages/returns_analysis.py", title="Returns Analysis"),
         st.Page("pages/backtest.py", title="Strategy Backtest"),

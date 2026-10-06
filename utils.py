@@ -18,6 +18,16 @@ STOCKS = {
     "TVS Motors": "tvs_motors",
 }
 
+# Yahoo Finance symbols for the live-prices page
+TICKERS = {
+    "Bajaj Auto": "BAJAJ-AUTO.NS",
+    "Eicher Motors": "EICHERMOT.NS",
+    "Hero Motocorp": "HEROMOTOCO.NS",
+    "Infosys": "INFY.NS",
+    "TCS": "TCS.NS",
+    "TVS Motors": "TVSMOTOR.NS",
+}
+
 # 1:1 bonus issues. Closes BEFORE the event date are divided by `factor`.
 EVENTS = {
     "TCS": {"date": "2018-05-31", "factor": 2},
