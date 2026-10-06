@@ -79,7 +79,15 @@ st.markdown(
     }
     div[data-testid="stMetric"]:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(15,42,67,0.12); }
     div[data-testid="stMetricLabel"] { font-size: 13px; color: #64748b; text-transform: uppercase; letter-spacing: .4px; }
-    div[data-testid="stMetricValue"] { font-size: 27px; font-weight: 800; color: #0f2a43; }
+    div[data-testid="stMetricValue"] { font-size: 24px; font-weight: 800; color: #0f2a43; }
+    /* show the full value instead of cutting it off with "..." */
+    div[data-testid="stMetricValue"],
+    div[data-testid="stMetricValue"] > div,
+    div[data-testid="stMetricLabel"],
+    div[data-testid="stMetricLabel"] > div {
+        white-space: normal !important; overflow: visible !important;
+        text-overflow: clip !important; line-height: 1.25;
+    }
 
     /* ---------- stock cards ---------- */
     .card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 6px 0 10px 0; }

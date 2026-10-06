@@ -15,7 +15,7 @@ c1, c2, c3, c4 = st.columns(4)
 c1.metric("Stocks analysed", len(prepared))
 c2.metric("Trading days", f"{len(first):,}")
 c3.metric("Period", f"{first['date'].min():%b %Y} – {first['date'].max():%b %Y}")
-c4.metric("Signals", f"{ov['Buys'].sum()} Buys / {ov['Sells'].sum()} Sells")
+c4.metric("Signals", f"{ov['Buys'].sum()} Buys · {ov['Sells'].sum()} Sells")
 
 section("Performance at a glance", "First close vs last close; sorted best to worst")
 cards = []
