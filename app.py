@@ -25,7 +25,7 @@ st.markdown(
     #MainMenu, footer { visibility: hidden; }
 
     .stApp { background: linear-gradient(180deg, #f4f7fb 0%, #eef2f7 100%); }
-    .block-container { max-width: 1400px; padding-top: 1.6rem; padding-bottom: 3rem; }
+    .block-container { max-width: 1700px; padding-top: 1.6rem; padding-bottom: 3rem; }
 
     /* ---------- hero banner ---------- */
     .hero {
@@ -125,6 +125,71 @@ st.markdown(
     }
     div[data-testid="stExpander"] { background: white; border-radius: 12px; border: 1px solid #e3e8ef; }
     hr { margin: 1.5rem 0; }
+
+    /* ---------- hover-to-open sidebar (desktop only) ----------
+       Delete this whole block to get the normal always-visible sidebar back. */
+    @media (hover: hover) and (min-width: 801px) {
+        section[data-testid="stSidebar"] {
+            position: fixed !important; top: 0; left: 0; height: 100vh !important;
+            width: 300px !important; min-width: 300px !important; margin-left: 0 !important;
+            transform: translateX(calc(-100% + 22px)) !important;
+            transition: transform 0.28s ease, box-shadow 0.28s ease;
+            z-index: 1000000 !important;
+        }
+        section[data-testid="stSidebar"]:hover,
+        section[data-testid="stSidebar"]:focus-within {
+            transform: translateX(0) !important;
+            box-shadow: 8px 0 30px rgba(11, 34, 57, 0.35);
+        }
+        /* little handle that stays visible while the sidebar is tucked away */
+        section[data-testid="stSidebar"]::after {
+            content: "›"; position: absolute; right: 5px; top: 50%;
+            color: #ffffff; font-size: 26px; font-weight: 700; opacity: 0.85;
+            transition: opacity 0.2s ease;
+        }
+        section[data-testid="stSidebar"]:hover::after,
+        section[data-testid="stSidebar"]:focus-within::after { opacity: 0; }
+        /* the manual collapse / expand buttons are not needed any more */
+        [data-testid="stSidebarCollapseButton"],
+        [data-testid="stSidebarCollapsedControl"],
+        [data-testid="collapsedControl"] { display: none !important; }
+        .block-container { padding-left: 3.2rem; padding-right: 3.2rem; }
+    }
+
+    /* ---------- hover-to-open sidebar (desktop only) ---------- */
+    @media (min-width: 992px) {
+        /* the sidebar keeps only a slim strip in the page layout, so content gets the full width */
+        section[data-testid="stSidebar"] {
+            width: 18px !important; min-width: 18px !important; max-width: 18px !important;
+            position: relative; z-index: 1000; overflow: visible !important;
+        }
+        /* the real sidebar panel floats on top and slides in on hover */
+        section[data-testid="stSidebar"] [data-testid="stSidebarContent"],
+        section[data-testid="stSidebar"] > div:first-child {
+            position: fixed !important; top: 0; left: 0; height: 100vh;
+            width: 300px !important; max-width: 300px !important;
+            transform: translateX(-282px);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            background: linear-gradient(180deg, #0b2239 0%, #123a5c 100%);
+            overflow-y: auto; z-index: 1001;
+        }
+        section[data-testid="stSidebar"]:hover [data-testid="stSidebarContent"],
+        section[data-testid="stSidebar"]:hover > div:first-child {
+            transform: translateX(0);
+            box-shadow: 8px 0 30px rgba(0, 0, 0, 0.35);
+        }
+        /* little hint arrow on the slim strip */
+        section[data-testid="stSidebar"]::after {
+            content: "\00BB"; position: fixed; left: 4px; top: 50%; z-index: 1002;
+            color: rgba(255,255,255,0.85); font-size: 20px; font-weight: 700; pointer-events: none;
+            transition: opacity 0.15s ease;
+        }
+        section[data-testid="stSidebar"]:hover::after { opacity: 0; }
+        /* the manual collapse/expand buttons are no longer needed */
+        [data-testid="stSidebarCollapseButton"],
+        [data-testid="stSidebarCollapsedControl"],
+        [data-testid="collapsedControl"] { display: none !important; }
+    }
     </style>
     """,
     unsafe_allow_html=True,
