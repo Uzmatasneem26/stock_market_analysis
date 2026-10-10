@@ -7,6 +7,25 @@ Infosys, TCS, TVS Motors) from 1 Jan 2015 to 31 Jul 2018, built from a SQL stock
 Find which stocks gained or lost, test a 20/50-day moving-average (golden cross) rule against buy-and-hold,
 and catch data problems such as bonus issues that look like losses.
 
+### Business Problem
+Investors and analysts often face challenges interpreting historical stock market data, identifying price trends, and evaluating stock performance manually. The lack of clear and interactive visualizations can make it difficult to understand market fluctuations and compare performance over time.
+
+### Business Value
+This project simplifies stock market data analysis by converting raw financial data into interactive visualizations and performance indicators, helping users understand historical market behavior more effectively.
+
+### Business Use Cases
+* Stock performance monitoring :Track historical stock prices and performance.
+
+* Trend analysis : Identify upward, downward, and sideways price movements.
+
+* Volatility analysis	Understand the extent of price fluctuations.
+
+* Trading volume analysis	Examine changes in trading activity over time.
+
+* Historical comparison	Compare stock performance across different periods.
+
+* Investment research	Provide historical insights to support further research and decision-making.
+
 ## Dataset
 Six daily CSVs with at least `Date` and `Close Price` (and `Deliverable Quantity` for the data-quality check).
 
@@ -64,9 +83,4 @@ Community Cloud with `app.py` as the main file.
 ## Live prices
 The Live Prices page uses the `yfinance` package (Yahoo Finance, about 15 minutes delayed, cached for 5 minutes). It needs internet access, which Streamlit Community Cloud provides. Live prices are split/bonus-adjusted by Yahoo, so they are not directly comparable to the 2015-2018 CSV closes.
 
-## Limitations
-* Percent changes ignore dividends; the backtest ignores brokerage, tax and slippage.
-* 3.6 years of data and six to eleven trades per stock is a small sample.
-* Results depend on the 20/50 window choice.
-* Bonus-issue ratios were inferred from the price drop, not verified against company filings.
-* Describes patterns only; not investment advice.
+ 
